@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netease.assignment.dao.IUserDao">
+    <!-- result map -->
+    <!-- for column to attribute -->
+    <resultMap type="com.netease.assignment.domain.User" id="userResultMap">
+        <id property="userId" column="id"/>
+        <result property="userName" column="username"/>
+        <result property="password" column="password"/>
+        <result property="userType" column="usertype"/>
+    </resultMap>
+
+    <!-- crud -->
+    <insert id="addUser" parameterType="com.netease.assignment.domain.User">
+        INSERT INTO user
+        (username, password, usertype) VALUES
+            (#{userName}, #{password}, #{userType})
+    </insert>
+
+    <delete id="deleteUser">
+        <!-- delete from user where id=#{id} -->
+    </delete>
+
+    <select id="getUser" resultMap="userResultMap">
+        SELECT
+            id,
+            username,
+            password,
+            usertype
+        FROM user
+        WHERE username = #{userName}
+    </select>
+
+    <select id="getUsers" resultMap="userResultMap">
+        SELECT
+            id,
+            username,
+            password,
+            usertype
+                form user;
+    </select>
+
+    <update id="updateUser" parameterType="com.netease.assignment.domain.User">
+        UPDATE user
+        SET
+            password = #{password},
+            usertype = #{userType}
+        WHERE id = #{userId}
+    </update>
+
+</mapper>
+

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netease.assignment.dao.IItemDao">
+    <!-- result map -->
+    <!-- for column to attribute -->
+    <resultMap type="com.netease.assignment.domain.Item" id="itemResultMap">
+        <id property="itemId" column="itemid"/>
+        <result property="itemTitle" column="itemtitle"/>
+        <result property="itemPrice" column="itemprice"/>
+        <result property="itemAbstract" column="itemabstract"/>
+        <result property="itemContent" column="itemcontent"/>
+        <result property="imageLocation" column="imagelocation"/>
+        <result property="locationType" column="locationtype"/>
+        <result property="valid" column="valid"/>
+        <result property="count" column="count"/>
+        <result property="sellerId" column="sellerid"/>
+    </resultMap>
+
+    <!-- crud -->
+    <insert id="addItem" parameterType="com.netease.assignment.domain.Item">
+        INSERT INTO item
+        (itemtitle,
+         itemprice, itemabstract, itemcontent, imagelocation, sellerid, locationtype)
+        VALUES
+            (#{itemTitle}, #{itemPrice}, #{itemAbstract}, #{itemContent}, #{imageLocation}, #{sellerId},
+             #{locationType})
+    </insert>
+
+    <delete id="deleteItem">
+        UPDATE item
+        SET
+            valid = "false"
+        WHERE itemid = #{itemId}
+    </delete>
+
+    <select id="getItem" resultMap="itemResultMap">
+        SELECT
+            I.*,
+            sum(T.count) AS count
+        FROM item I
+            LEFT JOIN Trade T
+                ON
+                    I.itemid = T.itemid
+        WHERE
+            I.valid = "true"
+            AND
+            I.itemId = #{itemId}
+    </select>
+
+    <select id="getItems" resultMap="itemResultMap">
+        SELECT *
+        FROM item
+        WHERE valid = "true";
+    </select>
+
+    <select id="getBoughtItems" resultMap="itemResultMap">
+        select I.*, T.count
+        from
+        item I
+        inner join trade T
+        on
+        I.itemid = T.itemid
+        <if test="_parameter >= 0">
+            where
+            T.buyerid =
+            #{_parameter}
+        </if>
+    </select>
+
+
+    <select id="getUnBoughtItems" resultMap="itemResultMap"
+            parameterType="int">
+        select I.*
+        from
+        item I left join trade T
+        on I.itemid = T.itemid
+        where
+        T.itemid is NULL
+        <if test="_parameter >= 0">
+            or(
+            T.buyerid != #{_parameter})
+        </if>
+    </select>
+
+    <update id="updateItem" parameterType="com.netease.assignment.domain.Item">
+        UPDATE item
+        SET
+            itemtitle     = #{itemTitle},
+            itemprice     = #{itemPrice},
+            itemabstract  = #{itemAbstract},
+            itemcontent   = #{itemContent},
+            imagelocation = #{imageLocation},
+            locationtype  = #{locationType}
+        WHERE
+            itemid = #{itemId}
+    </update>
+
+    <select id="getMaxItemId" resultType="int">
+        SELECT max(itemid)
+        FROM
+            item;
+    </select>
+
+    <select id="getSellerItems" parameterType="int" resultMap="itemResultMap">
+        SELECT
+            I.*,
+            sum(T.count) AS count
+        FROM item I
+            LEFT JOIN Trade T
+                ON
+                    I.itemid = T.itemid
+        WHERE
+            I.valid = "true"
+            AND
+            I.sellerid = #{sellerId}
+        GROUP BY I.itemid
+    </select>
+</mapper>
+
