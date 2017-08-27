@@ -1,119 +1,126 @@
 package com.netease.assignment.domain;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class Item {
 
-	private Integer itemId;
-	private String itemTitle;
-	private Double itemPrice;
-	private String itemAbstract;
-	private String itemContent;
-	private String imageLocation;
-	private String locationType;
-	private String valid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer itemId;
+    
+    private String itemTitle;
+    private Double itemPrice;
+    private String itemAbstract;
+    private String itemContent;
+    private String imageLocation;
+    private String locationType;
+    private String valid;
 
-	// 数量，可以是销量或者是购物车数量
-	private Integer count = 0;
+    // 数量，可以是销量或者是购物车数量
+    private Integer count = 0;
 
-	private Integer sellerId;
+    private Integer sellerId;
 
-	public Integer getItemId() {
+    public Integer getItemId() {
 
-		return itemId;
-	}
+        return itemId;
+    }
 
-	public void setItemId(Integer itemId) {
+    public void setItemId(Integer itemId) {
 
-		this.itemId = itemId;
-	}
+        this.itemId = itemId;
+    }
 
-	public String getItemTitle() {
+    public String getItemTitle() {
 
-		return itemTitle;
-	}
+        return itemTitle;
+    }
 
-	public void setItemTitle(String itemTitle) {
+    public void setItemTitle(String itemTitle) {
 
-		this.itemTitle = itemTitle;
-	}
+        this.itemTitle = itemTitle;
+    }
 
-	public Double getItemPrice() {
+    public Double getItemPrice() {
 
-		return itemPrice;
-	}
+        return itemPrice;
+    }
 
-	public void setItemPrice(Double itemPrice) {
+    public void setItemPrice(Double itemPrice) {
 
-		this.itemPrice = itemPrice;
-	}
+        this.itemPrice = itemPrice;
+    }
 
-	public String getItemAbstract() {
+    public String getItemAbstract() {
 
-		return itemAbstract;
-	}
+        return itemAbstract;
+    }
 
-	public void setItemAbstract(String itemAbstract) {
+    public void setItemAbstract(String itemAbstract) {
 
-		this.itemAbstract = itemAbstract;
-	}
+        this.itemAbstract = itemAbstract;
+    }
 
-	public String getItemContent() {
+    public String getItemContent() {
 
-		return itemContent;
-	}
+        return itemContent;
+    }
 
-	public void setItemContent(String itemContent) {
+    public void setItemContent(String itemContent) {
 
-		this.itemContent = itemContent;
-	}
+        this.itemContent = itemContent;
+    }
 
-	public String getImageLocation() {
+    public String getImageLocation() {
 
-		return imageLocation;
-	}
+        return imageLocation;
+    }
 
-	public void setImageLocation(String imageLocation) {
+    public void setImageLocation(String imageLocation) {
 
-		this.imageLocation = imageLocation;
-	}
+        this.imageLocation = imageLocation;
+    }
 
-	public String getLocationType() {
+    public String getLocationType() {
 
-		return locationType;
-	}
+        return locationType;
+    }
 
-	public void setLocationType(String locationType) {
+    public void setLocationType(String locationType) {
 
-		this.locationType = locationType;
-	}
+        this.locationType = locationType;
+    }
 
-	public String getValid() {
+    public String getValid() {
 
-		return valid;
-	}
+        return valid;
+    }
 
-	public void setValid(String valid) {
+    public void setValid(String valid) {
 
-		this.valid = valid;
-	}
+        this.valid = valid;
+    }
 
-	public Integer getCount() {
+    public Integer getCount() {
 
-		return count;
-	}
+        return count;
+    }
 
-	public void setCount(Integer count) {
+    public void setCount(Integer count) {
 
-		this.count = count;
-	}
+        this.count = count;
+    }
 
-	public Integer getSellerId() {
+    public Integer getSellerId() {
 
-		return sellerId;
-	}
+        return sellerId;
+    }
 
-	public void setSellerId(Integer sellerId) {
+    public void setSellerId(Integer sellerId) {
 
-		this.sellerId = sellerId;
-	}
+        this.sellerId = sellerId;
+    }
 
 }

@@ -1,93 +1,101 @@
 package com.netease.assignment.domain;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 public class User implements Serializable, Comparable<User> {
 
-	private static final long serialVersionUID = -8074971779845361589L;
+    private static final long serialVersionUID = -8074971779845361589L;
 
-	private Integer userId;
-	private String userName;
-	private String password;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer userId;
+	
+    private String userName;
+    private String password;
 
-	private String userType;
+    private String userType;
 
-	private boolean online;
+    private boolean online;
 
-	public User() {
+    public User() {
 
-		this.setOnline(false);
-	}
+        this.setOnline(false);
+    }
 
-	public Integer getUserId() {
+    public Integer getUserId() {
 
-		return userId;
-	}
+        return userId;
+    }
 
-	public void setUserId(Integer userId) {
+    public void setUserId(Integer userId) {
 
-		this.userId = userId;
-	}
+        this.userId = userId;
+    }
 
-	public String getUserName() {
+    public String getUserName() {
 
-		return userName;
-	}
+        return userName;
+    }
 
-	public void setUserName(String userName) {
+    public void setUserName(String userName) {
 
-		this.setOnline(true);
-		this.userName = userName;
-	}
+        this.setOnline(true);
+        this.userName = userName;
+    }
 
-	public String getPassword() {
+    public String getPassword() {
 
-		return password;
-	}
+        return password;
+    }
 
-	public void setPassword(String password) {
+    public void setPassword(String password) {
 
-		this.password = password;
-	}
+        this.password = password;
+    }
 
-	public String getUserType() {
+    public String getUserType() {
 
-		return userType;
-	}
+        return userType;
+    }
 
-	public void setUserType(String userType) {
+    public void setUserType(String userType) {
 
-		this.userType = userType;
-	}
+        this.userType = userType;
+    }
 
-	public static long getSerialversionuid() {
+    public static long getSerialversionuid() {
 
-		return serialVersionUID;
-	}
+        return serialVersionUID;
+    }
 
-	@Override
-	public int compareTo(User o) {
+    @Override
+    public int compareTo(User o) {
 
-		return Integer.valueOf(this.userId)
-				.compareTo(Integer.valueOf(o.userId));
-	}
+        return Integer.valueOf(this.userId)
+                .compareTo(Integer.valueOf(o.userId));
+    }
 
-	public void invalidate() {
+    public void invalidate() {
 
-		this.userName = null;
-		this.password = null;
-		this.userId = -1;
-		this.setOnline(false);
-	}
+        this.userName = null;
+        this.password = null;
+        this.userId = -1;
+        this.setOnline(false);
+    }
 
-	public boolean isOnline() {
+    public boolean isOnline() {
 
-		return online;
-	}
+        return online;
+    }
 
-	public void setOnline(boolean online) {
+    public void setOnline(boolean online) {
 
-		this.online = online;
-	}
+        this.online = online;
+    }
 
 }

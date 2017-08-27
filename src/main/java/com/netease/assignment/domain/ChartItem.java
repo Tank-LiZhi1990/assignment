@@ -1,78 +1,83 @@
 package com.netease.assignment.domain;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Table(name = "item")
 public class ChartItem {
 
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-	private Integer userId;
+    private Integer userId;
 
-	private Integer itemId;
-	private String itemTitle;
-	private Double price;
+    private Integer itemId;
+    private String itemTitle;
+    private Double price;
 
-	private int count;
+    private int count;
 
-	public Integer getId() {
+    public Integer getId() {
 
-		return id;
-	}
+        return id;
+    }
 
-	public void setId(Integer id) {
+    public void setId(Integer id) {
 
-		this.id = id;
-	}
+        this.id = id;
+    }
 
-	public Integer getUserId() {
+    public Integer getUserId() {
 
-		return userId;
-	}
+        return userId;
+    }
 
-	public void setUserId(Integer userId) {
+    public void setUserId(Integer userId) {
 
-		this.userId = userId;
-	}
+        this.userId = userId;
+    }
 
-	public Integer getItemId() {
+    public Integer getItemId() {
 
-		return itemId;
-	}
+        return itemId;
+    }
 
-	public void setItemId(Integer itemId) {
+    public void setItemId(Integer itemId) {
 
-		this.itemId = itemId;
-	}
+        this.itemId = itemId;
+    }
 
-	public String getItemTitle() {
+    public String getItemTitle() {
 
-		return itemTitle;
-	}
+        return itemTitle;
+    }
 
-	public void setItemTitle(String itemTitle) {
+    public void setItemTitle(String itemTitle) {
 
-		this.itemTitle = itemTitle;
-	}
+        this.itemTitle = itemTitle;
+    }
 
-	public double getPrice() {
+    public double getPrice() {
 
-		return price;
-	}
+        return price;
+    }
 
-	public void setPrice(double price) {
+    public void setPrice(double price) {
 
-		this.price = price;
-	}
+        this.price = price;
+    }
 
-	public int getCount() {
+    public int getCount() {
 
-		return count;
-	}
+        return count;
+    }
 
-	public void setCount(int count) {
+    public void setCount(int count) {
 
-		this.count = count;
-	}
+        this.count = count;
+    }
 
 }

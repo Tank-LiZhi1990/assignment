@@ -1,104 +1,119 @@
 package com.netease.assignment.domain;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Table(name = "trade")
 public class TradeItem {
 
-	private Integer userId;
-	// 物品
-	private Integer itemId;
-	private String itemTitle;
-	private String imageLocation;
-	private String locationType;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-	// new DateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
+    private Integer userId;
+    // 物品
+    private Integer itemId;
+    private String itemTitle;
+    private String imageLocation;
+    private String locationType;
 
-	// 购买时间
-	private String time;
-	// 购买时价格
-	private double price;
-	// 购买数量
-	private int count;
+    // new DateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
-	public Integer getUserId() {
+    // 购买时间
+    private String time;
+    // 购买时价格
+    private double price;
+    // 购买数量
+    private int count;
 
-		return userId;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setUserId(Integer userId) {
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-		this.userId = userId;
-	}
+    public Integer getUserId() {
 
-	public Integer getItemId() {
+        return userId;
+    }
 
-		return itemId;
-	}
+    public void setUserId(Integer userId) {
 
-	public void setItemId(Integer itemId) {
+        this.userId = userId;
+    }
 
-		this.itemId = itemId;
-	}
+    public Integer getItemId() {
 
-	public String getItemTitle() {
+        return itemId;
+    }
 
-		return itemTitle;
-	}
+    public void setItemId(Integer itemId) {
 
-	public void setItemTitle(String itemTitle) {
+        this.itemId = itemId;
+    }
 
-		this.itemTitle = itemTitle;
-	}
+    public String getItemTitle() {
 
-	public String getImageLocation() {
+        return itemTitle;
+    }
 
-		return imageLocation;
-	}
+    public void setItemTitle(String itemTitle) {
 
-	public void setImageLocation(String imageLocation) {
+        this.itemTitle = itemTitle;
+    }
 
-		this.imageLocation = imageLocation;
-	}
+    public String getImageLocation() {
 
-	public String getLocationType() {
+        return imageLocation;
+    }
 
-		return locationType;
-	}
+    public void setImageLocation(String imageLocation) {
 
-	public void setLocationType(String locationType) {
+        this.imageLocation = imageLocation;
+    }
 
-		this.locationType = locationType;
-	}
+    public String getLocationType() {
 
-	public String getTime() {
+        return locationType;
+    }
 
-		return time;
-	}
+    public void setLocationType(String locationType) {
 
-	public void setTime(String time) {
+        this.locationType = locationType;
+    }
 
-		this.time = time;
-	}
+    public String getTime() {
 
-	public double getPrice() {
+        return time;
+    }
 
-		return price;
-	}
+    public void setTime(String time) {
 
-	public void setPrice(double price) {
+        this.time = time;
+    }
 
-		this.price = price;
-	}
+    public double getPrice() {
 
-	public int getCount() {
+        return price;
+    }
 
-		return count;
-	}
+    public void setPrice(double price) {
 
-	public void setCount(int count) {
+        this.price = price;
+    }
 
-		this.count = count;
-	}
+    public int getCount() {
+
+        return count;
+    }
+
+    public void setCount(int count) {
+
+        this.count = count;
+    }
 
 }
